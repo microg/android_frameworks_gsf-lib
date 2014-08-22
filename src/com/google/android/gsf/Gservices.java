@@ -79,4 +79,12 @@ public class Gservices {
 		}
 		return result;
 	}
+
+	
+	public static void setString(final ContentResolver resolver, String key, String value) {
+		ContentValues values = new ContentValues();
+		values.put("name", key);
+		values.put("value", value);
+		resolver.update(MAIN_URI, values, null, null);
+	}
 }
