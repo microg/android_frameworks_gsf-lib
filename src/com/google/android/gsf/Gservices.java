@@ -24,7 +24,6 @@ public class Gservices {
 	private static final String TAG = "GoogleServices";
 	private static HashMap<String, String> cache;
 	private static String[] preloadedPrefixes = new String[0];
-	private static ContentResolver resolver;
 	private static Object versionToken;
 
 	public static boolean getBoolean(final ContentResolver resolver, final String key, boolean defaultValue) {
@@ -60,7 +59,7 @@ public class Gservices {
 	}
 
 	public static String getString(final ContentResolver resolver, final String key, final String defaultValue) {
-		final Cursor cursor = Gservices.resolver.query(CONTENT_URI, null, null, new String[]{key}, null);
+		final Cursor cursor = resolver.query(CONTENT_URI, null, null, new String[]{key}, null);
 		if (cursor == null) {
 			return defaultValue;
 		}
